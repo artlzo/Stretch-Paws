@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let poses = Poses()
+    
     var body: some View {
         NavigationView {
-            List {
+            List (poses.poseData) { pose in
                 NavigationLink(destination: DetailView()) {
-                    Text("Downward-facing Dog")
+                    Image(pose.icon)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                    Text(pose.name)
+                        .fontWeight(.medium)
+                        .font(.title3)
+                        .padding(.leading, 20)
                 }
+                .padding(5)
+                .listRowBackground(Color("Secondary"))
                 
-                Text("Standing Forward Fold")
-                Text("Tree Pose")
+                
             }
             .listStyle(.grouped)
             .navigationTitle("Stretch + Paws")
@@ -28,7 +38,10 @@ struct ContentView: View {
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+        }
     }
 }
 
