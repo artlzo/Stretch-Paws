@@ -20,7 +20,7 @@ struct ContentView: View {
         ZStack {
             NavigationView {
                 List (poses.poseData) { pose in
-                    NavigationLink(destination: DetailView()) {
+                    NavigationLink(destination: DetailView(pose: pose)) {
                         Image(pose.icon)
                             .resizable()
                             .frame(width: 60, height: 60)
@@ -46,7 +46,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
             ContentView()
         }
     }
