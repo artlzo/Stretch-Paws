@@ -15,20 +15,41 @@ struct DetailView: View {
         ZStack {
             Color("Secondary")
                 .ignoresSafeArea()
-            VStack {
-                Image(pose.icon)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                Text(pose.name)
-                    .font(.title)
-                Text(pose.asana)
-                    .padding(20)
-                Text(pose.description)
-                Text("How to")
-                Text("Tool tip")
-                Text(pose.topTip)
+            ScrollView(showsIndicators: false){
+                VStack(spacing:20) {
+                    Image(pose.icon)
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                    Text(pose.name)
+                        .foregroundColor(Color("Highlight"))
+                        .font(.system(size: 36, weight: .bold))
                 
-                
+                    Text(pose.asana)
+                        .font(.system(size: 22, weight: .medium))
+                        .italic()
+                    
+                    
+                    VStack (alignment: .leading, spacing: 20) {
+                    Text(pose.description)
+                        
+                    Text("How to")
+                            .font(.system(size: 22, weight: .medium))
+                            .foregroundColor(Color("Highlight"))
+
+                    ForEach(pose.steps,id: \.self) { step in
+                        Text(step)
+
+                    }
+                    
+                        
+                    Text("Tool tip:")
+                            .font(.system(size: 22, weight: .medium))
+                            .foregroundColor(Color("Highlight"))
+                    Text(pose.topTip)
+                            
+                    }
+                    
+                }.padding(.horizontal, 20)
             }
         }
     }
