@@ -9,7 +9,11 @@ import SwiftUI
 
 struct DetailView: View {
     
+    
+    
     let pose: Pose
+    
+    @State private var timerOpen = false
     
     var body: some View {
         ZStack {
@@ -51,7 +55,11 @@ struct DetailView: View {
                     
                 }.padding(.horizontal, 20)
             }
-            TimerPanelView()
+            TimerPanelView(timerOpen: $timerOpen)
+            
+        }
+        .onTapGesture {
+            timerOpen = false
         }
     }
 }
@@ -64,23 +72,41 @@ struct DetailView_Previews: PreviewProvider {
 }
 
 struct TimerPanelView: View {
+    
+    @Binding var timerOpen: Bool
+    
     var body: some View {
+        
+        // if the time panel is closed, show the timer panel closed view
+        // if the timer panel is open, show the timer panel open view
         VStack {
             Spacer()
-            Text("try it out")
-            .padding(40)
-            .foregroundColor(Color("Secondary"))
-            .frame(maxWidth: .infinity, maxHeight: 80)
-            .background(Color("Highlight"))
+            VStack {
+                timerOpen ? AnyView(TimerOpenView()) : AnyView(TimerClosedView())
+                
+            }.foregroundColor(Color("Secondary"))
+            .frame(maxWidth: .infinity, maxHeight: timerOpen ? 200 : 80)
+                .background(Color("Highlight"))
             .cornerRadius(6)
             
-        } .ignoresSafeArea()
+        }
+        .ignoresSafeArea()
+            .onTapGesture {
+                timerOpen.toggle()
+            }
     }
 }
 
 
 struct TimerOpenView: View {
     var body: some View {
-        Text("hold that pose ")
+        Text("hold that pose")
+    }
+}
+
+struct TimerClosedView: View {
+    var body: some View {
+        Text("try it out")
+            
     }
 }
