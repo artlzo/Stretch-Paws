@@ -85,7 +85,7 @@ struct TimerPanelView: View {
                 timerOpen ? AnyView(TimerOpenView()) : AnyView(TimerClosedView())
                 
             }.foregroundColor(Color("Secondary"))
-            .frame(maxWidth: .infinity, maxHeight: timerOpen ? 200 : 80)
+            .frame(maxWidth: .infinity, maxHeight: timerOpen ? 400 : 80)
                 .background(Color("Highlight"))
             .cornerRadius(6)
             
@@ -100,13 +100,40 @@ struct TimerPanelView: View {
 
 struct TimerOpenView: View {
     var body: some View {
-        Text("hold that pose")
+        VStack {
+            Text("hold that pose")
+                .fontWeight(.medium)
+            Spacer()
+            Text("Try staying in this pose for 30 seconds, if you need to come out sooner, that's okay.")
+                .multilineTextAlignment(.center)
+            Spacer()
+            Text("00:30")
+                .font(.system(size: 96))
+            Spacer()
+            Button {
+                // do something action
+                
+            } label: {
+                Text("Start the Timer")
+                    
+            }
+            .frame(width: 300, height: 50)
+            .background(Color("Secondary"))
+            .foregroundColor(Color("Primary"))
+            .cornerRadius(30)
+            
+        }.padding(30)
+        
     }
 }
 
 struct TimerClosedView: View {
     var body: some View {
         Text("try it out")
+            .fontWeight(.medium)
+            .padding(20)
+            
+        Spacer()
             
     }
 }
