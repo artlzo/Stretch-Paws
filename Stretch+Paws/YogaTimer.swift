@@ -14,18 +14,18 @@ import Foundation
 // Single source of truths
 
 
-class YogaTimer {
+class YogaTimer: ObservableObject {
     
     // Timmer States
+    @Published var timerActive = false
+    @Published var timerPaused = false
+    @Published var timerEnded = false
+    @Published var timerDuration = 30
     
-    var timerActive = false
-    var timerPaused = false
-    var timerEnded = false
-    var timerDuration = 30
     var yogaTimer = Timer()
     
     
-    
+
 
     // Timer functionalityw
     // Start the timer

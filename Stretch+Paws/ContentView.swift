@@ -15,7 +15,6 @@ struct ContentView: View {
     }
     
     let poses = Poses()
-    
     var body: some View {
         ZStack {
             NavigationView {
