@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E43234C2865E9EE00041D90 /* YogaTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E43234B2865E9ED00041D90 /* YogaTimer.swift */; };
 		6EF2BBB227C3DCB200478999 /* Stretch_PawsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2BBB127C3DCB200478999 /* Stretch_PawsApp.swift */; };
 		6EF2BBB427C3DCB200478999 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2BBB327C3DCB200478999 /* ContentView.swift */; };
 		6EF2BBB627C3DCB500478999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF2BBB527C3DCB500478999 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E43234B2865E9ED00041D90 /* YogaTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogaTimer.swift; sourceTree = "<group>"; };
 		6EF2BBAE27C3DCB200478999 /* Stretch+Paws.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stretch+Paws.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF2BBB127C3DCB200478999 /* Stretch_PawsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stretch_PawsApp.swift; sourceTree = "<group>"; };
 		6EF2BBB327C3DCB200478999 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				6EF2BBB327C3DCB200478999 /* ContentView.swift */,
 				6EF2BBBF27C3F07300478999 /* DetailView.swift */,
 				6EF2BBC127C5261600478999 /* Pose.swift */,
+				6E43234B2865E9ED00041D90 /* YogaTimer.swift */,
 				6EF2BBB527C3DCB500478999 /* Assets.xcassets */,
 				6EF2BBB727C3DCB500478999 /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			files = (
 				6EF2BBC227C5261600478999 /* Pose.swift in Sources */,
 				6EF2BBB427C3DCB200478999 /* ContentView.swift in Sources */,
+				6E43234C2865E9EE00041D90 /* YogaTimer.swift in Sources */,
 				6EF2BBC027C3F07300478999 /* DetailView.swift in Sources */,
 				6EF2BBB227C3DCB200478999 /* Stretch_PawsApp.swift in Sources */,
 			);
