@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 // What kind of data type should this? Should it be a class or a struct?
 // WHere does the timer need to be shared?
@@ -21,6 +22,7 @@ class YogaTimer: ObservableObject {
     @Published var timerPaused = false
     @Published var timerEnded = false
     @Published var timerDuration = 30
+    var audioPlayer: AVAudioPlayer?
     
     var yogaTimer = Timer()
     
@@ -72,10 +74,11 @@ class YogaTimer: ObservableObject {
     // End the timer
     
     func stopTimer() {
+        playSound(sound: "chime", type: "wav")
         
         timerEnded = true
         timerActive = false
-        timerDuration = 30
+        timerDuration = 10
         yogaTimer.invalidate()
     }
 
@@ -86,13 +89,18 @@ class YogaTimer: ObservableObject {
     // timer stops running
     // timer duration resets ready for the next time we run it
     
-    
-    func playSound() {
-        //play audio file
+    func playSound(sound: String, type: String) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type) {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer?.play()
+            } catch {
+                print("ERROR")
+            }
+        }
     }
     
-    
-    // Countdown ?
+
     
     func setTitleText() -> String {
         if timerEnded {
