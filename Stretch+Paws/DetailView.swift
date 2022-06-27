@@ -3,7 +3,6 @@
 //  Stretch+Paws
 //
 //  Created by Arturo Liranzo on 2/21/22.
-//
 
 import SwiftUI
 
