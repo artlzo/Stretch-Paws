@@ -105,26 +105,23 @@ struct TimerOpenView: View {
     
     var body: some View {
         VStack {
-            Text("hold that pose")
+            Text(yogaTimer.setTitleText())
                 .fontWeight(.medium)
             Spacer()
-            Text("Try staying in this pose for 30 seconds, if you need to come out sooner, that's okay.")
+            Text(yogaTimer.setDescriptionText())
                 .multilineTextAlignment(.center)
             Spacer()
-            Text(yogaTimer.timerDuration < 10 ? "00:0\(yogaTimer.timerDuration)" : "00:\(yogaTimer.timerDuration)")
-                .font(.system(size: 96))
-            Spacer()
-            Button {
-                yogaTimer.startTimer()
-                
-            } label: {
-                Text("Start the Timer")
-                    
+            
+            if !yogaTimer.timerEnded {
+                CountdownView(yogaTimer: yogaTimer)
+                Spacer()
             }
-            .frame(width: 300, height: 50)
-            .background(Color("Secondary"))
-            .foregroundColor(Color("Primary"))
-            .cornerRadius(30)
+           
+            if yogaTimer.timerActive {
+              TimerPausedButtonView(yogaTimer: yogaTimer)
+            } else {
+              TimerActiveButtonView(yogaTimer: yogaTimer)
+            }
             
         }.padding(30)
         
@@ -140,4 +137,47 @@ struct TimerClosedView: View {
         Spacer()
             
     }
+}
+
+
+struct CountdownView: View {
+  @ObservedObject var yogaTimer: YogaTimer
+  var body: some View {
+    Text(yogaTimer.timerDuration < 10 ? "00:0\(yogaTimer.timerDuration)" : "00:\(yogaTimer.timerDuration)")
+      .font(.system(size: 96))
+  }
+}
+
+struct TimerPausedButtonView: View {
+  @ObservedObject var yogaTimer: YogaTimer
+  var body: some View {
+    Button {
+      yogaTimer.pauseTimer()
+    } label: {
+      Text("Pause the timer")
+        .padding(70)
+    }
+    .frame(width: 300, height: 50)
+    .background(Color("Highlight"))
+    .overlay(
+      RoundedRectangle(cornerRadius: 30)
+        .stroke(Color("Secondary"), lineWidth: 3)
+    )
+  }
+}
+
+struct TimerActiveButtonView: View {
+  @ObservedObject var yogaTimer: YogaTimer
+  var body: some View {
+    Button {
+      yogaTimer.startTimer()
+    } label: {
+      Text(yogaTimer.timerPaused || yogaTimer.timerEnded ? "Restart timer" : "Start the timer")
+        .padding(70)
+    }
+    .frame(width: 300, height: 50)
+    .background(Color("Secondary"))
+    .foregroundColor(Color("Primary"))
+    .cornerRadius(30)
+  }
 }

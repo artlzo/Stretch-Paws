@@ -36,6 +36,8 @@ class YogaTimer: ObservableObject {
         // if the time gest to 0, stop the timer
         
         timerActive = true
+        timerPaused = false
+        timerEnded = false
         
         yogaTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { Timer in
             
@@ -92,5 +94,20 @@ class YogaTimer: ObservableObject {
     
     // Countdown ?
     
+    func setTitleText() -> String {
+        if timerEnded {
+            return "You did it"
+        } else {
+            return "Hold That Pose"
+        }
+    }
+    
+    func setDescriptionText() -> String {
+        if timerEnded {
+            return "Puurrfect"
+        } else {
+            return "Try sttaying in this pose for 30 seconds. If youneed to come out sooner, that's ok."
+    }
 }
 
+}
